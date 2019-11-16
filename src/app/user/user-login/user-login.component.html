@@ -1,0 +1,20 @@
+<form class="example-container" [formGroup]="signInForm"  (ngSubmit)="onSubmit()">
+        <mat-form-field>
+                <input matInput  formControlName="username" placeholder="输入你的用户名">
+                <div *ngIf="signInForm.get('username').dirty&&signInForm.get('username').hasError('required')">
+                    请输入您的用户名！
+                </div>
+              </mat-form-field>
+    <mat-form-field>
+      <input matInput  formControlName="password" placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <div *ngIf="signInForm.get('password').dirty&&signInForm.get('password').hasError('required')">
+          请输入您的密码！
+      </div>
+    </mat-form-field>
+    <div class="example-button-row">
+        <button mat-raised-button color="accent">登录</button>
+        或
+        <a [routerLink]="['/sign-up']">注册！</a>
+    </div>
+  </form>

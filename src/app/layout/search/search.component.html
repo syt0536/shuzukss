@@ -1,0 +1,30 @@
+<div class='zhongjian'>
+  <div class='zhongbu'>     
+    <div class="row">
+      <div class="col-lg-6">
+        <div class='bt'>
+            <img  class='lhp'src='../../../assets/11111.png'>
+        <h2>数据库</h2>
+        
+        </div>
+        <div class="input-group">
+      <input type="text" class="form-control" placeholder="一键搜索" #content>
+      <span class="input-group-btn">
+        <!-- <button class="btn btn-default" type="button" routerLink="'/table'+" >查找</button> -->
+        <button class="btn btn-default" type="button"  (click)="chazhao()">查找</button>
+        <button class="btn btn-default" type="button"  (click)="target()">查看靶点分布</button>
+      </span>
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+  </div>
+</div>
+<div class="news">
+  <div class="newContent">
+    <h3>新闻中心</h3>
+    <hr>
+  <ul>
+    <li *ngFor="let newd of newshuzu"><a href={{newd.hr}} target="blank">{{newd.name}} <span class="ntime" title={{newd.time}}>{{newd.time}}</span></a><span class="ntime">{{newd.time}}</span></li>
+  </ul>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+.navbar-default{
+color:white;
+background-color: #35384D;
+margin:0px;
+}
+table{
+    width:100%;
+    table-layout: fixed;}
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";

@@ -1,0 +1,14 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 300px;
+    margin:20px auto;
+
+  }
+  .example-button-row{
+    width: 300px;
+    margin:0px auto;
+  }

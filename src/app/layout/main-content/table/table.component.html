@@ -1,0 +1,129 @@
+<div class='zhongjian'>
+  <div class='zhongbu'>     
+    <div class="row">
+      <img  class='lhp'src='../../../assets/11111.png'>
+        <!-- <img src='../../../../assets/bb97f0c8-3e92-4ff4-62c3-a99a5925a0b5.gif'> -->
+      <div class="col-lg-6">
+        
+        <div class="input-group">
+      <input type="text" class="form-control" placeholder="一键搜索" #content>
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" (click)='hqnew()'>查找</button>
+
+      </span>
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+  </div>
+</div>
+<div  class = 'example-container mat-elevation-z8' > 
+<table mat-table [dataSource]="images" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="药物名称">
+    <th mat-header-cell *matHeaderCellDef> 药物名称 </th>
+    <td mat-cell *matCellDef="let element"> {{element.drug_name}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="药物别名">
+    <th mat-header-cell *matHeaderCellDef> 药物别名 </th>
+    <td mat-cell *matCellDef="let element"> {{element.other_drug_names}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="研发公司">
+    <th mat-header-cell *matHeaderCellDef> 研发公司 </th>
+    <td mat-cell *matCellDef="let element"> {{element.originator_company}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="靶点">
+    <th mat-header-cell *matHeaderCellDef> 靶点 </th>
+    <td mat-cell *matCellDef="let element"> {{element.target_based_actions}} </td>
+  </ng-container>
+  <ng-container matColumnDef="技术">
+    <th mat-header-cell *matHeaderCellDef> 技术 </th>
+    <td mat-cell *matCellDef="let element"> {{element.technologies}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
+<div class="mdl-cell mdl-cell--5-col">
+  <mat-paginator [length]="pageMeta?.total_results"
+                 [pageSize]="pageMeta?.per_page"
+                 [pageSizeOptions]="pageSizeOptions"
+                 (page)="pageChange($event)"
+  >
+  </mat-paginator>
+</div>
+<mat-form-field>
+  <mat-select placeholder="选择展示信息" [formControl]="toppings" multiple [(ngModel)]="displayedColumns" >
+    <mat-select-trigger>
+      {{toppings.value ? toppings.value[0] : ''}}
+      <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
+        (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? '' : ''}})
+      </span>
+    </mat-select-trigger>
+    <mat-option *ngFor="let topping of toppingList" [value]="topping" >{{topping}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+
+<!-- <app-user-login></app-user-login>
+<app-user-sign-up></app-user-sign-up> -->
+
+<!-- <table class="t1">
+  <th>id</th>
+  <tr *ngFor="let image of images">{{image.id}}</tr>
+</table>
+<table class="t2">
+  <th>target</th>
+  <tr *ngFor="let image of images">{{image.target}}</tr>
+</table> -->
+<div class="control-section">
+<ejs-grid #grid id='Grid' [dataSource]='data' [toolbar]='toolbarOptions' height='272px'   [allowPaging]='true' [pageSettings]='pageSettings' [allowExcelExport]='true' (toolbarClick)='toolbarClick($event)'>
+  <e-columns>
+      <e-column field='position' headerText='position' textAlign='Right' width=120></e-column>
+      <e-column field='name' headerText='name' width=150></e-column>
+      <e-column field='weight' headerText='weight' width=150></e-column>
+      <e-column field='symbol' headerText='symbol' width=150></e-column>
+  </e-columns>
+  </ejs-grid>
+</div>
+
+<p-table [value]="cars">
+  <ng-template pTemplate="header">
+      <tr>
+          <th *ngFor="let col of cols">
+              {{col.header}}
+          </th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-car>
+      <tr>
+          <td *ngFor="let col of cols">
+                  {{car[col.field]}}
+          </td>
+      </tr>
+  </ng-template>
+</p-table>
+<ag-grid-angular 
+    #agGrid
+    style="width: 100%; height: 100%;"
+    class="ag-theme-material"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    rowSelection="multiple"
+    [enableColResize]="true"
+    (gridReady)="onGridReady($event)"
+    [pagination]="true"
+    [paginationPageSize]="paginationPageSize"
+    >
+</ag-grid-angular>

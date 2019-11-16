@@ -1,0 +1,20 @@
+.lhp{
+ 
+    height:50px;
+    display:inline;
+    float:left;
+    margin-right:10px;
+    margin-left:10px;
+    padding-right:0px;
+    padding-bottom: 11px;
+  }
+  .col-lg-6{
+    margin-left:0px;
+    padding-left:0px;
+    
+  }
+  .zhongjian{margin-top:10px;
+  }
+  .demo-chart{
+    width:98%;
+  }

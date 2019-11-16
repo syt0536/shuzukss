@@ -1,0 +1,25 @@
+<div class='zhongjian'>
+  <div class='zhongbu'>     
+    <div class="row">
+      <img  class='lhp'src='../../../assets/11111.png'>
+        <!-- <img src='../../../../assets/bb97f0c8-3e92-4ff4-62c3-a99a5925a0b5.gif'> -->
+      <div class="col-lg-6">
+        
+        <div class="input-group">
+      <input type="text" class="form-control" placeholder="一键搜索" #content>
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" (click)='hqnew()'>查看靶点分布</button>
+
+      </span>
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+  </div>
+</div>
+<div>
+  <div echarts [options]="obj" class="demo-chart" (click)='goDetail($event)'></div>
+</div>
+<div>
+  <div echarts [options]="obja" class="demo-chart" (chartDblClick)='goDetail($event)'></div>
+</div>
+ 

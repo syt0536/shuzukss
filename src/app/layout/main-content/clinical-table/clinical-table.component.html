@@ -1,0 +1,57 @@
+<div  class = 'example-container mat-elevation-z8' > 
+  <table mat-table [dataSource]="images" class="mat-elevation-z8">
+  
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> title </th>
+      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="phase">
+      <th mat-header-cell *matHeaderCellDef> phase </th>
+      <td mat-cell *matCellDef="let element"> {{element.phase}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> status </th>
+      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="intervention">
+      <th mat-header-cell *matHeaderCellDef> intervention </th>
+      <td mat-cell *matCellDef="let element"> {{element.intervention}} </td>
+    </ng-container>
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef> location </th>
+      <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  </div>
+  <div class="mdl-cell mdl-cell--5-col">
+    <mat-paginator [length]="pageMeta?.total_results"
+                   [pageSize]="pageMeta?.per_page"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="pageChange($event)"
+    >
+    </mat-paginator>
+  </div>
+  <mat-form-field>
+    <mat-select placeholder="选择展示信息" [formControl]="toppings" multiple [(ngModel)]="displayedColumns" >
+      <mat-select-trigger>
+        {{toppings.value ? toppings.value[0] : ''}}
+        <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
+          (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? '' : ''}})
+        </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let topping of toppingList" [value]="topping" >{{topping}}</mat-option>
+    </mat-select>
+  </mat-form-field>

@@ -1,0 +1,81 @@
+<form class="form-horizontal" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label" required text-muted><span class='jt'>*</span>用户名</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" formControlName="userName" placeholder="请输入用户名">
+        <div *ngIf="signUpForm.get('userName').dirty&&signUpForm.get('userName').hasError('required')">
+            请输入您的用户名 (即登录名）！</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword3" class="col-sm-2 control-label"><span class='jt'>*</span>密码</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" formControlName="password" id="inputPassword3" placeholder="Password">
+        <div *ngIf="signUpForm.get('password').dirty&&signUpForm.get('password').errors">
+            <ng-container *ngIf="signUpForm.get('password').hasError('required')">请输入新密码！</ng-container>
+            <ng-container *ngIf="signUpForm.get('password').hasError('minlength')">密码不少于8位！</ng-container>
+            <ng-container *ngIf="signUpForm.get('password').hasError('pattern')">密码不能全部为数字！</ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label"><span class='jt'>*</span>确认密码</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control"  formControlName="confirmPassword" id="inputPassword3" placeholder="Password">
+          <div *ngIf="signUpForm.get('confirmPassword').dirty&&signUpForm.get('confirmPassword').errors">
+              <ng-container *ngIf="signUpForm.get('confirmPassword').hasError('required')">请再次输入您要设定的密码！</ng-container>
+              <ng-container *ngIf="signUpForm.get('confirmPassword').hasError('confirm')">两次密码不一致！</ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label"><span class='jt'>*</span>电子邮箱</label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control" id="inputEmail3" formControlName="email" placeholder="Email">
+            <div *ngIf="signUpForm.get('email').dirty&&signUpForm.get('email').errors">
+                <ng-container *ngIf="signUpForm.get('email').hasError('required')">请输入您的邮箱！</ng-container>
+                <ng-container *ngIf="signUpForm.get('email').hasError('pattern')">请输入正确格式的邮箱！</ng-container>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+            
+            <label for="inputEmail3" class="col-sm-2 control-label"><span class='jt'>*</span>手机号</label>
+        <!-- <div class="input-group"> -->
+            <div class="col-sm-10">
+            <!-- <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> </span> -->
+            <input type="text" class="form-control" formControlName="phoneNumber" placeholder="" aria-describedby="basic-addon1">
+            <div *ngIf="signUpForm.get('phoneNumber').dirty&&signUpForm.get('phoneNumber').errors">
+                <ng-container *ngIf="signUpForm.get('phoneNumber').hasError('required')">请输入您的手机号码！</ng-container>
+                <ng-container *ngIf="signUpForm.get('phoneNumber').hasError('pattern')">请输入正确的手机号码！</ng-container>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">姓名</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" formControlName="name" placeholder="">
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">单位名称</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="companyName" placeholder="">
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">研究方向</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" formControlName="researchDirection" placeholder="">
+                </div>
+              </div>
+              <div class="example-button-row">
+                  <button mat-raised-button color="accent">注册</button>
+              
+                  <button mat-raised-button color="primary" type="reset">重置</button>
+              </div>
+
+
+</form>
+
+      
